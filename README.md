@@ -9,3 +9,11 @@ http://18.196.30.95/landing-project-udacity
 * landing_without_data: I Used hash + section id inside the link href to scroll to the target section.
 
 <img src="land.PNG">
+
+
+*  Add an active state to your navigation items when a section is in the viewport.
+*  Hide fixed navigation bar while not scrolling (it should still be present on page load).
+*  Hint: setTimeout can be used to check when the user is no longer scrolling.
+*  Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
+*  Update/change the design/content.
+*  Make sections collapsible.
