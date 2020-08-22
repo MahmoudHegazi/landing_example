@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Easy in 1.30 hour</title>
+<style>
+body {
+  margin-top: -15px;
+  margin-left: 1px;
+}
+
+nav {
+  position:fixed;
+  width: 100%;
+}
+ul {
+
+  list-style: none;
+  background-color: green;
+  
+}
+
+ul li {
+ display: inline-block;
+ 
+}
+
+li a {
+ text-decoration: none;
+  padding: 8px 15px;
+ border: 2px solid gold;
+  display: block;
+  color: white;
+}
+
+li a:hover {
+  background-color: gold;
+  color: white;
+}
+.your-active-class {
+  background-color: gold;
+  border-bottom: 2px solid crimson;
+  border-top: 2px solid crimson;
+}
+
+.active-link {
+  background-color: gold;
+}
+
+section {
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+}
+
+</style>
+</head>
+<body>
+<nav>
+<ul id="mn"></ul>
+</nav>
+<br><br>
+<section class="section" id="section1">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+</section>
+<section class="section" id="section2">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+</section>
+<section class="section" id="section3">
+<h1>This is a Heading</h1>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+</section>
+<section class="section" id="section4">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<h1>This is a Heading</h1>
+
+</section>
+
+<script>
+const x = document.querySelectorAll('.section');
+const menu = document.getElementById("mn");
+var isInViewport = function (elem) {
+  let check = elem.getBoundingClientRect();
+  let top = check.top;
+  let bottom = check.bottom;
+  let left = check.left;
+  let right = check.right;
+  
+  return (
+     top >= 0 &&
+     left >= 0 &&
+     bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+     right <= (window.innerWidth || document.documentElement.clientWidth)
+     
+  )
+}
+
+
+
+function myclear() {
+  x.forEach((elm) => {
+    elm.classList.remove('your-active-class');
+  });
+}
+
+function addclass(element) {
+
+    element.classList.add('your-active-class');
+
+}
+
+function clearlinks() {
+  const links = document.querySelectorAll('.link');
+  links.forEach((Element) => {
+    Element.classList.remove('active-link');
+  });
+}
+
+function activelink(elm) {
+   const links = document.querySelectorAll('.link');
+  links.forEach((link) => {
+		let link_href = link.getAttribute("href");
+        
+		if (link_href == "#" + elm.id) {			
+		link.classList.add("active-link");
+    }
+  });
+  
+  
+}
+let fragment = document.createDocumentFragment();
+x.forEach((Element) => {
+  let newli = document.createElement('li');
+  let link = document.createElement('a');
+  let txt = document.createTextNode(Element.id);
+  let att = document.createAttribute("href");  
+  att.value = "#" + Element.id;
+  link.setAttributeNode(att);
+  let att1 = document.createAttribute("class");
+  att1.value ="link";
+  link.setAttributeNode(att1);
+  link.appendChild(txt);
+  newli.appendChild(link);
+  fragment.appendChild(newli);
+  
+
+})
+
+menu.appendChild(fragment);
+
+document.addEventListener('scroll', function(e) {
+ e.preventDefault();
+x.forEach((Element)=> {
+  if (isInViewport(Element)) { 
+    myclear();
+    clearlinks();
+    Element.classList.add('your-active-class');
+    activelink(Element);
+  } 
+  
+  if (window.scrollY == 0) {
+  myclear();
+  clearlinks();
+  }
+});
+});
+
+</script>
+</body>
+</html>
