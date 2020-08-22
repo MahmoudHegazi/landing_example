@@ -32,7 +32,7 @@ ul li {
 
 li a {
  text-decoration: none;
-  padding: 8px 15px;
+  padding: 12px 18px;
 
   display: block;
   color: white;
@@ -236,13 +236,15 @@ x.forEach((Element)=> {
     Element.classList.add('your-active-class');
     activelink(Element);
     getnav[0].style.display = "block";
+    menu.style.background = "transparent";
   } 
   
   if (window.scrollY == 0) {
   myclear();
   
   clearlinks();
-  getnav[0].style.display = "none";
+  getnav[0].style.display = "block";
+  menu.style.background = "black";
   }
 });
 });
