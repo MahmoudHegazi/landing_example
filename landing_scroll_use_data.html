@@ -268,9 +268,19 @@ function scrollWin() {
   window.scrollTo(0, 0);
 }
 
- 
-
-
+ $(window).scroll(function() {
+    //don't forget to replace #demo with your nav id
+    $("#mn").show();
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+        // after user scroll for the first time start the function if user didn't
+       // after 1 second the it hide the nav with id demo
+        console.log("Haven't scrolled in 1second!");
+     //add your nav id      do something if user not scrolled
+    $("#mn").hide();
+    }, 2000));
+    
+});
 
 
 
